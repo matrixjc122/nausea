@@ -24,7 +24,8 @@ public class CameraMove : MonoBehaviour {
 	float rotationY = 0.0f;
 
 
-	void Update () {
+	void Update () 
+	{
 		//Zoom
 		float scroll = Input.GetAxis ("Mouse ScrollWheel");
 		transform.Translate (0, scroll * zoomSpeed, scroll * zoomSpeed, Space.World);
@@ -52,8 +53,5 @@ public class CameraMove : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			transform.position += Vector3.right * speed * Time.deltaTime;
 		}
-
-
-
 	}
 }
