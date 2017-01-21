@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseInteraction : MonoBehaviour {
+	public Text amount;
+	private int selectedRessourceAmount;
 
 	public GameObject objectToPlace;
 
@@ -21,6 +24,11 @@ public class MouseInteraction : MonoBehaviour {
 		if(Input.GetMouseButtonDown(0))
 		{
 			PlaceObject();
+		}
+
+		if (Input.GetMouseButtonDown (1)) 
+		{
+			ShowRessourceAmount ();
 		}
 	}
 
@@ -41,4 +49,12 @@ public class MouseInteraction : MonoBehaviour {
 			Instantiate (objectToPlace, hitPoint, Quaternion.identity);
 		} 
 	}
+
+	void ShowRessourceAmount(){
+		if (hit.collider != null && hit.collider.CompareTag("EnvironmentRessource")){
+			selectedRessourceAmount = hit.collider.GetComponent<RessourceProperties> ().ressourceAmount;
+			amount.text = "Ressource: " + selectedRessourceAmount.ToString ();
+		}
+	}
+
 }
