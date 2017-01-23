@@ -50,8 +50,6 @@ public class MouseInteraction : MonoBehaviour {
 
 	void CursorInformation(){
 
-
-
 		if (hit.collider != null) 
 		{
 			uiStatusLine.text = "This objects name is: " + hit.collider.name; 
@@ -62,6 +60,8 @@ public class MouseInteraction : MonoBehaviour {
 			RessourceProperties otherRessourceProperties = hit.collider.GetComponent<RessourceProperties> ();  
 			uiStatusLine.text = hit.collider.name + " --> RessourceAmount: " + otherRessourceProperties.ressourceAmount; 
 		}
+
+
 	}
 }
 
