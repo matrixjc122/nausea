@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MouseInteraction : MonoBehaviour {
 
 	public Text uiStatusLine;
+	public Text uiStatusLineRessource;
+
 	public GameObject objectToPlace;
 
 	private RaycastHit hit;
@@ -53,14 +55,21 @@ public class MouseInteraction : MonoBehaviour {
 		if (hit.collider != null) 
 		{
 			uiStatusLine.text = "This objects name is: " + hit.collider.name; 
-		}
+			uiStatusLineRessource.text = "-"; 
+		} 
 
-		if (hit.collider != null && hit.collider.CompareTag("EnvironmentRessource"))
+		if (hit.collider != null && hit.collider.CompareTag ("EnvironmentRessource")) 
 		{
 			RessourceProperties otherRessourceProperties = hit.collider.GetComponent<RessourceProperties> ();  
-			uiStatusLine.text = hit.collider.name + " --> RessourceAmount: " + otherRessourceProperties.ressourceAmount; 
+			uiStatusLine.text = "This objects name is: " + hit.collider.name; 
+			uiStatusLineRessource.text = "RessourceAmount: " + otherRessourceProperties.ressourceAmount; 
 		}
 
+		if (hit.collider == null)
+		{
+			uiStatusLine.text = "There is nothing."; 
+			uiStatusLineRessource.text = "-"; 
+		}
 
 	}
 }
