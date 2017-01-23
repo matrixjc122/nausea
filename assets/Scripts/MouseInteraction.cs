@@ -42,9 +42,10 @@ public class MouseInteraction : MonoBehaviour {
 
 	void PlaceObject()
 	{
-		if (hit.collider != null && hit.collider.CompareTag("EnvironmentGround"))
+  if (hit.collider != null && (hit.collider.CompareTag("EnvironmentGround") || hit.collider.CompareTag("EnvironmentRessource")))
 		{
 			hitPoint = hit.point;
+      hitPoint.y = 0;
 			Debug.Log (hitPoint);
 			Instantiate (objectToPlace, hitPoint, Quaternion.identity);
 		} 
