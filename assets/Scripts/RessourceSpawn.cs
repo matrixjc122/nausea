@@ -16,7 +16,7 @@ public class RessourceSpawn : MonoBehaviour {
 	private float randScale;
 
 	void Start () {
-		groundScale = ground.transform.localScale.x * 3;
+		groundScale = ground.transform.localScale.x * 5;
 		Debug.Log (groundScale);
 
 		for (int i = 0; i < count; i++) 
