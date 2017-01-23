@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectCheckRessources : MonoBehaviour {
 
+	public Text uiStatusLine;
 	public int availableRessources = 0;
 
-	private List<Collider> foundColliders = new List<Collider>();
 	private RessourceProperties ressourceProperties;
+
 
 	void Start () {
 		float radius = gameObject.GetComponent<SphereCollider>().radius;
@@ -23,6 +25,6 @@ public class ObjectCheckRessources : MonoBehaviour {
 			}
 		}
 
-		Debug.Log ("Es befinden sich " + availableRessources + " Ressourcen im Umkreis.");
+		uiStatusLine.text = "Es befinden sich " + availableRessources + " Ressourcen im Umkreis.";
 	}
 }
