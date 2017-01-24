@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MouseInteraction : MonoBehaviour {
-	public Text amount;
-	private int selectedRessourceAmount;
+
+	public Text uiStatusLine;
+	public Text uiStatusLineRessource;
 
 	public GameObject objectToPlace;
 
 	private RaycastHit hit;
 	private Vector3 hitPoint;
+
+	private RessourceProperties ressourceProperties; 
 
 	void Raycast()
 	{		
@@ -21,14 +24,10 @@ public class MouseInteraction : MonoBehaviour {
 
 	void Update () {
 		Raycast ();
+		CursorInformation ();
 		if(Input.GetMouseButtonDown(0))
 		{
 			PlaceObject();
-		}
-
-		if (Input.GetMouseButtonDown (1)) 
-		{
-			ShowRessourceAmount ();
 		}
 	}
 
@@ -42,19 +41,37 @@ public class MouseInteraction : MonoBehaviour {
 
 	void PlaceObject()
 	{
-		if (hit.collider != null && hit.collider.CompareTag("EnvironmentGround"))
+  		if (hit.collider != null && (hit.collider.CompareTag("EnvironmentGround") || hit.collider.CompareTag("EnvironmentRessource")))
 		{
 			hitPoint = hit.point;
+      		hitPoint.y = 0;
 			Debug.Log (hitPoint);
 			Instantiate (objectToPlace, hitPoint, Quaternion.identity);
 		} 
 	}
 
-	void ShowRessourceAmount(){
-		if (hit.collider != null && hit.collider.CompareTag("EnvironmentRessource")){
-			selectedRessourceAmount = hit.collider.GetComponent<RessourceProperties> ().ressourceAmount;
-			amount.text = "Ressource: " + selectedRessourceAmount.ToString ();
-		}
-	}
+	void CursorInformation(){
 
+		if (hit.collider != null) 
+		{
+			uiStatusLine.text = "This objects name is: " + hit.collider.name; 
+			uiStatusLineRessource.text = "-"; 
+		} 
+
+		if (hit.collider != null && hit.collider.CompareTag ("EnvironmentRessource")) 
+		{
+			RessourceProperties otherRessourceProperties = hit.collider.GetComponent<RessourceProperties> ();  
+			uiStatusLine.text = "This objects name is: " + hit.collider.name; 
+			uiStatusLineRessource.text = "RessourceAmount: " + otherRessourceProperties.ressourceAmount; 
+		}
+
+		if (hit.collider == null)
+		{
+			uiStatusLine.text = "There is nothing."; 
+			uiStatusLineRessource.text = "-"; 
+		}
+
+	}
 }
+
+
