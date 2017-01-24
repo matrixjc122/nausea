@@ -28,7 +28,9 @@ public class BallController : MonoBehaviour {
 
 		rb.AddForce (movement);
 		}
-		if (rb.velocity.magnitude > maxSpeed) {
+
+		if (rb.velocity.magnitude > maxSpeed) 
+		{
 			rb.velocity = rb.velocity.normalized * maxSpeed;
 		}
 	}
