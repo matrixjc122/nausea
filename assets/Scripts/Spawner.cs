@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour {
 			if (Physics.Raycast (new Vector3 (randomX, r.bounds.max.y + 5f, randomZ), -Vector3.up, out hit)) 
 			{
 				Instantiate (objectToInstantiate, hit.point, Quaternion.LookRotation(hit.normal));
-				Debug.Log (hit.normal);
+				//Debug.Log (hit.normal);
 			}
 		}
 	}

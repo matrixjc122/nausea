@@ -14,7 +14,9 @@ public class CameraFollow : MonoBehaviour {
 		offset = Camera.main.transform.position - transform.position;
 	}
 
-
+	void OnMouseEnter(){
+		initialPosition = transform.position;
+	}
 
 	void OnMouseOver() {
 		Camera.main.transform.position = transform.position + offset;

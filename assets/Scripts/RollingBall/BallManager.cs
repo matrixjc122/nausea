@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallManager : MonoBehaviour {
+
+	public Text showActualAmount;
 
 	private Rigidbody rb;
 	private RessourceProperties ressourcePorperties; 
@@ -27,13 +30,14 @@ public class BallManager : MonoBehaviour {
 
 	void Update () {
 		ActualRessources ();
+		if (actualAmount <= 0)
+			Dead ();
 	}
 
 	void ActualRessources(){
 		AddRessources ();
 		SubstractRessources ();
-		Debug.Log (actualAmount + rb.name);
-		Dead ();
+		showActualAmount.text = actualAmount.ToString();
 	}
 
 	void AddRessources(){
@@ -43,25 +47,18 @@ public class BallManager : MonoBehaviour {
 			actualAmount = actualAmount + added;
 
 			collectedSomething = false;
-
-			//Debug.Log("This ball added " + collectedRessources + "ressources");
 		}
 	}
 
 	void SubstractRessources(){
-		if (Input.GetMouseButton (0)) 
-		{
 			distance = rb.velocity.magnitude * Time.deltaTime;
-		
-			substracted = distance * 1f;
+			substracted = distance * 2f;
 
 			actualAmount = actualAmount - substracted;
-
-		}
 	}
 
 	void Dead(){
-		if (actualAmount <= 0)
+			showActualAmount.text = "You are out of ressources.";
 			GetComponent<BallController>().enabled = false;  
 	
 	}
