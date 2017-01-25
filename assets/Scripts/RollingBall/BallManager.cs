@@ -6,6 +6,7 @@ public class BallManager : MonoBehaviour {
 
 	private Rigidbody rb;
 	private RessourceProperties ressourcePorperties; 
+	private BallController ballControl; 
 
 	public float startAmount;
 	public float actualAmount;
@@ -21,6 +22,7 @@ public class BallManager : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody> ();
 		collectedSomething = false;
+		actualAmount = startAmount;
 	}
 
 	void Update () {
@@ -31,6 +33,7 @@ public class BallManager : MonoBehaviour {
 		AddRessources ();
 		SubstractRessources ();
 		Debug.Log (actualAmount + rb.name);
+		Dead ();
 	}
 
 	void AddRessources(){
@@ -50,11 +53,17 @@ public class BallManager : MonoBehaviour {
 		{
 			distance = rb.velocity.magnitude * Time.deltaTime;
 		
-			substracted = distance * 10f;
+			substracted = distance * 1f;
 
 			actualAmount = actualAmount - substracted;
 
 		}
+	}
+
+	void Dead(){
+		if (actualAmount <= 0)
+			GetComponent<BallController>().enabled = false;  
+	
 	}
 		
 	void OnTriggerEnter(Collider other){

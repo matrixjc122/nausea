@@ -11,7 +11,7 @@ public class RessourceProperties : MonoBehaviour {
 
 	void Start () {
 		size = transform.localScale;
-		ressourceAmount = Mathf.RoundToInt(size.x * 100f); //ressourceAmount abhängig von der größe des objektes
+		ressourceAmount = Mathf.RoundToInt(size.x * 10f); //ressourceAmount abhängig von der größe des objektes
 
 	}
 }

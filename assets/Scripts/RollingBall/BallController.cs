@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour {
 	public float maxSpeed;
 
 	private Rigidbody rb;
-	private bool mouseOver;
+	public bool mouseOver;
 
 
 	void Start () 
