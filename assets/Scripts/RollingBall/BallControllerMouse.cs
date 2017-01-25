@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : MonoBehaviour {
+public class BallControllerMouse : MonoBehaviour {
 
 	public float speed;
 	public float maxSpeed;

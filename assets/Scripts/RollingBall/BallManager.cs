@@ -9,7 +9,8 @@ public class BallManager : MonoBehaviour {
 
 	private Rigidbody rb;
 	private RessourceProperties ressourcePorperties; 
-	private BallController ballControl; 
+	private BallControllerMouse ballControlMouse; 
+	private BallControllerKeyboard ballControlKeyboard; 
 
 	public float startAmount;
 	public float actualAmount;
@@ -59,8 +60,8 @@ public class BallManager : MonoBehaviour {
 
 	void Dead(){
 			showActualAmount.text = "You are out of ressources.";
-			GetComponent<BallController>().enabled = false;  
-	
+			GetComponent<BallControllerMouse>().enabled = false;  
+			GetComponent<BallControllerKeyboard>().enabled = false;  
 	}
 		
 	void OnTriggerEnter(Collider other){
