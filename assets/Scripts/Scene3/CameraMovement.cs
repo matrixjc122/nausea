@@ -6,8 +6,8 @@ public class CameraMovement : MonoBehaviour {
 
 	public float m_DampTime = 0.2f;
 	public float m_ScreenEdgeBuffer = 4f;
-	public float m_MinSize = 2f;
-	public float m_MaxSize = 10f;
+	public float m_MinSize;
+	public float m_MaxSize;
 	public Transform m_Target;
 	public Rigidbody m_RigidBody;
 
