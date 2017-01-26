@@ -32,14 +32,15 @@ public class BallMovement : MonoBehaviour {
 	private void Start () {
 		m_MoveAxisNameHorizontal = "Horizontal";
 		m_MoveAxisNameVertical = "Vertical";
+
 	}
 	
 	private void Update () {
 		m_MoveInputValueHorizontal = Input.GetAxis (m_MoveAxisNameHorizontal);
 		m_MoveInputValueVertical = Input.GetAxis (m_MoveAxisNameVertical);
 
-		Debug.Log (m_MoveInputValueHorizontal + " Horizontal Input");
-		Debug.Log (m_MoveInputValueVertical + " Vertical Input");
+		//Debug.Log (m_MoveInputValueHorizontal + " Horizontal Input");
+		//Debug.Log (m_MoveInputValueVertical + " Vertical Input");
 
 	}
 
@@ -64,9 +65,10 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	private void AddForce(){
+		/*
 		Vector3 direction = Vector3.zero;
 
-		/*if (m_MoveInputValueHorizontal > 0f)
+		if (m_MoveInputValueHorizontal > 0f)
 			direction = Vector3.right;
 		if (m_MoveInputValueHorizontal < 0f)
 			direction = Vector3.left;
