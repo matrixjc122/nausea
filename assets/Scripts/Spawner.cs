@@ -29,8 +29,12 @@ public class Spawner : MonoBehaviour {
 
 			if (Physics.Raycast (new Vector3 (randomX, r.bounds.max.y + 5f, randomZ), -Vector3.up, out hit)) 
 			{
-				Instantiate (objectToInstantiate, hit.point, Quaternion.LookRotation(hit.normal));
-				//Debug.Log (hit.normal);
+				float scale = Random.Range (1f, 5f);
+				float rotate = Random.Range (0f, 270f);
+
+				GameObject obj = Instantiate (objectToInstantiate, hit.point, Quaternion.Euler(0, rotate, 0));
+
+				obj.transform.localScale = new Vector3 (scale, scale, scale); 
 			}
 		}
 	}
