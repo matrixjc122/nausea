@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : MonoBehaviour {
+public class BallControllerMouse : MonoBehaviour {
 
 	public float speed;
 	public float maxSpeed;
 
 	private Rigidbody rb;
-	private bool mouseOver;
+	public bool mouseOver;
 
 
 	void Start () 
@@ -28,7 +28,9 @@ public class BallController : MonoBehaviour {
 
 		rb.AddForce (movement);
 		}
-		if (rb.velocity.magnitude > maxSpeed) {
+
+		if (rb.velocity.magnitude > maxSpeed) 
+		{
 			rb.velocity = rb.velocity.normalized * maxSpeed;
 		}
 	}
