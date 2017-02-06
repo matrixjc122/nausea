@@ -65,27 +65,13 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	private void AddForce(){
-		/*
-		Vector3 direction = Vector3.zero;
+		
+		//Vector3 movement = new Vector3 (m_MoveInputValueHorizontal * m_SpeedHorizontal, 0.0f, m_MoveInputValueVertical * m_SpeedVertical);
+		//m_Rigidbody.AddForce (movement);
 
-		if (m_MoveInputValueHorizontal > 0f)
-			direction = Vector3.right;
-		if (m_MoveInputValueHorizontal < 0f)
-			direction = Vector3.left;
-
-		if (m_MoveInputValueVertical > 0f)
-			direction = Vector3.forward;
-		if (m_MoveInputValueVertical < 0f)
-			direction = Vector3.back;
-			 
-		Vector3 movementHorizontal = direction * m_MoveInputValueHorizontal * m_SpeedHorizontal * Time.deltaTime;
-		Vector3 movementVertical = direction * m_MoveInputValueVertical * m_SpeedVertical * Time.deltaTime;
-		*/
-
-		Vector3 movement = new Vector3 (m_MoveInputValueHorizontal * m_SpeedHorizontal, 0.0f, m_MoveInputValueVertical * m_SpeedVertical);
-
+		Vector3 movement = new Vector3 (m_MoveInputValueHorizontal  * m_SpeedHorizontal, 0.0f, m_MoveInputValueVertical * m_SpeedVertical);
+		movement = Quaternion.AngleAxis(45f, Vector3.up) * movement;
 		m_Rigidbody.AddForce (movement);
 
-		
 	}
 }
