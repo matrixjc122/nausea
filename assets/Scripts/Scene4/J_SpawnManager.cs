@@ -27,7 +27,7 @@ public class J_SpawnManager : MonoBehaviour {
 			randomZ = Random.Range (r.bounds.min.z, r.bounds.max.z);
 			RandomPick ();
 
-			if (Physics.Raycast (new Vector3 (randomX, r.bounds.max.y + 5f, randomZ), -Vector3.up, out hit)) 
+			if (Physics.Raycast (new Vector3 (randomX, r.bounds.max.y + 5f, randomZ), -Vector3.up, out hit, 1 << 10) && hit.collider.CompareTag("EnvironmentGround")) 
 			{
 				float scale = Random.Range (0.5f, 3f); 
 				float rotate = Random.Range (-270f, 270f);
@@ -35,6 +35,8 @@ public class J_SpawnManager : MonoBehaviour {
 				GameObject obj = Instantiate (objectToInstantiate[rndPick], hit.point, Quaternion.Euler(0f, rotate, 0f));
 
 				obj.transform.localScale = new Vector3 (scale, scale, scale);  
+
+				obj.transform.SetParent (transform);
 			}
 		}
 	}
