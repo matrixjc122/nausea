@@ -41,7 +41,7 @@ public class J_BallMovement : MonoBehaviour {
 		m_MoveInputValueHorizontal = Input.GetAxis (m_MoveAxisNameHorizontal);
 		m_MoveInputValueVertical = Input.GetAxis (m_MoveAxisNameVertical);
 
-		Debug.Log (camRot.eulerAngles);
+		//Debug.Log (camRot.eulerAngles);
 	}
 
 	private void FixedUpdate(){

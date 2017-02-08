@@ -13,6 +13,9 @@ public class J_SpawnManager : MonoBehaviour {
 	private float randomZ;
 	private Renderer r;
 
+	public float scaleMin;
+	public float scaleMax;
+
 	void Start () {
 		r = GetComponent<Renderer> ();
 
@@ -29,7 +32,7 @@ public class J_SpawnManager : MonoBehaviour {
 
 			if (Physics.Raycast (new Vector3 (randomX, r.bounds.max.y + 5f, randomZ), -Vector3.up, out hit, 1 << 10) && hit.collider.CompareTag("EnvironmentGround")) 
 			{
-				float scale = Random.Range (0.5f, 3f); 
+				float scale = Random.Range (scaleMin, scaleMax); 
 				float rotate = Random.Range (-270f, 270f);
 
 				GameObject obj = Instantiate (objectToInstantiate[rndPick], hit.point, Quaternion.Euler(0f, rotate, 0f));
