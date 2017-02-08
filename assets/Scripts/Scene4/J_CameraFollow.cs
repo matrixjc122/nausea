@@ -39,7 +39,7 @@ public class J_CameraFollow : MonoBehaviour {
 
 	void Zoomer()
 	{
-		float zoomInput = Input.GetAxis ("Mouse Y")*zoomSpeed;
+		float zoomInput = -Input.GetAxis ("Mouse Y")*zoomSpeed;
 		cam.position += new Vector3 (0f, zoomInput, 0f);
 		cam.LookAt(target);
 	}

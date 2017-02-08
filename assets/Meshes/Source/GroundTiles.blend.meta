@@ -16,6 +16,11 @@ ModelImporter:
     100016: Plant_Leave_003
     100018: Plant_Leave_004
     100020: Plant_Leave_Taper
+    100022: Armature
+    100024: Bone
+    100026: Bone_001
+    100028: Bone_002
+    100030: Bone_003
     400000: BaseGroundTile
     400002: BaseGroundTile_Hills
     400004: //RootNode
@@ -27,6 +32,11 @@ ModelImporter:
     400016: Plant_Leave_003
     400018: Plant_Leave_004
     400020: Plant_Leave_Taper
+    400022: Armature
+    400024: Bone
+    400026: Bone_001
+    400028: Bone_002
+    400030: Bone_003
     2300000: BaseGroundTile
     2300002: BaseGroundTile_Hills
     2300004: Cube
@@ -58,7 +68,9 @@ ModelImporter:
     4300016: Plant_Leave_001
     4300018: Plant_Leave
     7400000: Default Take
+    7400002: ArmatureAction
     9500000: //RootNode
+    13700000: Plant
   materials:
     importMaterials: 1
     materialName: 0
