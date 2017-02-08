@@ -19,7 +19,7 @@ public class J_GI : MonoBehaviour {
 	}
 
 	void Update () {
-		Color final = Color.Lerp(eigenColor , eigenColor * intensity,  Mathf.PerlinNoise(speedPerlinA*Time.time,speedPerlinB*Time.time));
+		Color final = Color.Lerp(Color.black , eigenColor * 1f,  Mathf.PerlinNoise(speedPerlinA*Time.time,speedPerlinB*Time.time));
 		rend.material.SetColor ("_EmissionColor", final);
 
 	}
