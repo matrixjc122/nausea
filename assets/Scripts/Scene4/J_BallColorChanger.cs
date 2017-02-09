@@ -22,7 +22,7 @@ public class J_BallColorChanger : MonoBehaviour {
 			Color currentCol = rend.material.color;
 
 			Color otherCol = other.GetComponent<Renderer> ().material.color;
-			rend.material.SetColor("_EmissionColor", otherCol * 10f);
+			rend.material.SetColor("_EmissionColor", otherCol *10f);
 
 			colorModule.color = new ParticleSystem.MinMaxGradient(otherCol, new Color(255f, 255f, 255f, 0f)); 
 		}

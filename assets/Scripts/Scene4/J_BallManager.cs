@@ -6,20 +6,11 @@ using UnityEngine.UI;
 public class J_BallManager : MonoBehaviour {
 
 	public Text showActualAmount;
-
 	private Rigidbody rb;
 	private RessourceProperties ressourcePorperties; 
-	private BallControllerMouse ballControlMouse; 
-	private BallControllerKeyboard ballControlKeyboard; 
 
 	public float startAmount;
-	public float actualAmount;
-	public float added;
-	public float substracted;
-	public float distance;
-
-	private float useRessourcesForMovement;
-	private float collectedRessources;
+	private float actualAmount;
 	private bool collectedSomething;
 
 	void Start () 
@@ -31,8 +22,7 @@ public class J_BallManager : MonoBehaviour {
 
 	void Update () {
 		ActualRessources ();
-		if (actualAmount <= 0)
-			Dead ();
+		Dead ();
 	}
 
 	void ActualRessources(){
@@ -44,7 +34,7 @@ public class J_BallManager : MonoBehaviour {
 	void AddRessources(){
 		if (collectedSomething) 
 		{
-			added = ressourcePorperties.ressourceAmount; // what was added by ressourceProperties  Script attached to ressourceObject
+			float added = ressourcePorperties.ressourceAmount; // what was added by ressourceProperties  Script attached to ressourceObject
 			actualAmount = actualAmount + added;
 
 			collectedSomething = false;
@@ -52,16 +42,17 @@ public class J_BallManager : MonoBehaviour {
 	}
 
 	void SubstractRessources(){
-			distance = rb.velocity.magnitude * Time.deltaTime;
-			substracted = distance * 2f;
+			float distance = rb.velocity.magnitude * Time.deltaTime;
+			float substracted = distance * 2f;
 
 			actualAmount = actualAmount - substracted;
 	}
 
 	void Dead(){
+		if (actualAmount <= 0) {
 			showActualAmount.text = "You are out of ressources.";
-			GetComponent<BallControllerMouse>().enabled = false;  
-			GetComponent<BallControllerKeyboard>().enabled = false;  
+			GetComponent<J_BallMovement> ().enabled = false;  
+		}
 	}
 		
 	void OnTriggerEnter(Collider other){
